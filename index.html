@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VELN</title>
+    <script src="https://telegram.org/js/telegram-web-app.js"></script>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@700;600;500&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div class="veln-sidebar" id="sidebar">
+    <div class="sidebar-header">
+      <span class="sidebar-logo">✨</span>
+      <span class="sidebar-title">VELN</span>
+    </div>
+    <nav class="sidebar-menu">
+      <button class="sidebar-btn" id="sidebar-inventory" data-tab="inventory">📦 Инвентарь</button>
+      <button class="sidebar-btn" id="sidebar-top" data-tab="top">🏆 Топ</button>
+      <button class="sidebar-btn" id="sidebar-case" onclick="openCase()">🎁 Кейс</button>
+      <div class="sidebar-shadow"></div>
+    </nav>
+    <div class="sidebar-footer">
+      <span class="footer-emoji">🚀</span>
+      <span class="footer-text">Удачи!</span>
+    </div>
+  </div>
+  <div class="veln-container">
+    <!-- VC БАЛАНС -->
+    <div class="vc-balance-block">
+      <span class="vc-label">VC:</span>
+      <span id="vc-balance" class="vc-balance-value">0</span>
+      <span class="vc-coin">🪙</span>
+    </div>
+    <span class="sidebar-burger" id="burger" onclick="toggleSidebar()">☰</span>
+    <header>
+      <h1 class="veln-title">VELN <span class="emoji">🔥</span></h1>
+      <p class="veln-sub">Стильный Telegram Clicker <span class="emoji">✨</span></p>
+    </header>
+    <main>
+      <div class="counter-block animate-pop">
+        <span class="counter-label">Баланс <span class="emoji">💰</span>:</span>
+        <span id="balance" class="counter-value">0</span>
+      </div>
+      <button class="veln-main-btn btn-case animate-glow" onclick="openCase()">🎁 Открыть кейс (0/100)</button>
+      <nav class="veln-nav">
+        <button class="veln-nav-btn active" data-tab="inventory">📦 Инвентарь</button>
+        <button class="veln-nav-btn" data-tab="top">🏆 Топ</button>
+      </nav>
+      <section class="veln-tabs">
+        <div id="tab-inventory" class="tab-content">
+          <div id="inventory">Ваш инвентарь пуст <span class="emoji">😢</span></div>
+        </div>
+        <div id="tab-top" class="tab-content hidden">
+          <div id="top-list">Тут будет топ игроков <span class="emoji">🏅</span></div>
+        </div>
+      </section>
+    </main>
+  </div>
+  <div class="veln-overlay" id="overlay" onclick="toggleSidebar()"></div>
+  <div id="drop-modal" class="drop-modal">
+    <div class="drop-content" id="drop-content"></div>
+  </div>
+  <script src="script.js"></script>
+  <script>
+    // Открытие/закрытие sidebar только по нажатию
+    function toggleSidebar() {
+      document.getElementById('sidebar').classList.toggle('open');
+      document.getElementById('overlay').classList.toggle('show');
+    }
+
+    // Логика для открытия/закрытия инвентаря по клику
+    let inventoryOpened = true;
+    function toggleInventory() {
+      inventoryOpened = !inventoryOpened;
+      const tab = document.getElementById('tab-inventory');
+      if (inventoryOpened) {
+        tab.classList.remove('hidden');
+        document.querySelector('.veln-nav-btn[data-tab="inventory"]').classList.add('active');
+        document.getElementById('sidebar-inventory').classList.add('active');
+      } else {
+        tab.classList.add('hidden');
+        document.querySelector('.veln-nav-btn[data-tab="inventory"]').classList.remove('active');
+        document.getElementById('sidebar-inventory').classList.remove('active');
+      }
+    }
+
+    function showTab(tab) {
+      if (tab === 'inventory') {
+        toggleInventory();
+        return;
+      }
+      document.getElementById('tab-inventory').classList.add('hidden');
+      document.getElementById('tab-top').classList.add('hidden');
+      if (tab === 'top') {
+        document.getElementById('tab-top').classList.remove('hidden');
+        setTimeout(() => {
+          if (typeof window.showTop === "function") window.showTop(true);
+        }, 100);
+        inventoryOpened = false;
+      }
+      document.querySelectorAll('.veln-nav-btn').forEach(btn => btn.classList.remove('active'));
+      document.querySelectorAll('.sidebar-btn').forEach(btn => btn.classList.remove('active'));
+      if (tab === 'inventory') {
+        document.querySelector('.veln-nav-btn[data-tab="inventory"]').classList.add('active');
+        document.getElementById('sidebar-inventory').classList.add('active');
+      } else if (tab === 'top') {
+        document.querySelector('.veln-nav-btn[data-tab="top"]').classList.add('active');
+        document.getElementById('sidebar-top').classList.add('active');
+      }
+      document.getElementById('sidebar').classList.remove('open');
+      document.getElementById('overlay').classList.remove('show');
+    }
+
+    document.addEventListener("DOMContentLoaded", () => {
+      document.querySelector('.veln-nav-btn[data-tab="inventory"]').onclick = toggleInventory;
+      document.getElementById('sidebar-inventory').onclick = toggleInventory;
+      document.querySelector('.veln-nav-btn[data-tab="top"]').onclick = () => showTab('top');
+      document.getElementById('sidebar-top').onclick = () => showTab('top');
+      showTab('inventory');
+    });
+  </script>
+</body>
+</html>

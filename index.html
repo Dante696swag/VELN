@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VELN</title>
+    <script src="https://telegram.org/js/telegram-web-app.js"></script>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="app">
+        <header>
+            <h1>VELN</h1>
+            <p>Зарабатывай очки, открывай кейсы</p>
+        </header>
+        
+        <div class="balance-container">
+            <span id="balance">0</span> очков
+        </div>
+        
+        <div class="actions">
+    <button class="btn-case" onclick="openCase()">
+        🎁 Открыть кейс (100 очков)
+    </button>
+    <button class="btn-inventory" onclick="showInventory()">
+        🎒 Инвентарь
+    </button>
+    <!-- Вот эта строка — новая кнопка! -->
+    <button class="btn-top" onclick="showTop()">🏆 ТОП игроков</button>
+</div>
+
+<!-- Это блок для списка топа -->
+<div id="top-list" class="top-list hidden"></div>
+        </div>
+        
+        <div id="inventory" class="inventory hidden"></div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>

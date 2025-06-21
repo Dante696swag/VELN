@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VELN</title>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://telegram.org/js/telegram-web-app.js"></script>
+</head>
+<body>
+  <div class="veln-container">
+    <header class="veln-header">
+      <span class="veln-title">VELN</span>
+      <span class="veln-sub">Обменивайте ваше время на очки</span>
+    </header>
+
+    <!-- Новый блок профиля -->
+    <div class="profile-block">
+      <div class="profile-avatar" id="profile-avatar"></div>
+      <div class="profile-info">
+        <div><span id="profile-username"></span></div>
+        <div>Уровень: <span id="profile-level">1</span> <span id="profile-exp-bar"></span></div>
+        <div id="profile-referral" class="profile-referral"></div>
+      </div>
+    </div>
+
+    <div class="vc-big-balance-block">
+      <div class="vc-coin-logo">
+        <span class="vc-coin-logo-text">VELN<br>COIN</span>
+      </div>
+      <div class="vc-big-balance-value" id="vc-balance">0</div>
+      <div class="vc-coin-desc">Внутриигровая валюта</div>
+    </div>
+    <div class="counter-block animate-pop" id="score-balance-block">
+      <span class="counter-label">Баланс очков:</span>
+      <span id="balance" class="counter-value">0</span>
+    </div>
+    <button class="veln-main-btn btn-case animate-glow" id="open-case-btn">
+      🎁 Открыть кейс (<span id="current-balance">0</span>/100)
+    </button>
+    <button class="veln-main-btn btn-case" id="ar-case-btn" title="AR-открытие">🕶️ AR-режим (beta)</button>
+    <nav class="veln-nav">
+      <button class="veln-nav-btn" data-tab="inventory">📦 Инвентарь</button>
+      <button class="veln-nav-btn" data-tab="top">🏆 Топ</button>
+      <button class="veln-nav-btn" data-tab="tasks">🔥 Ежедневки</button>
+      <button class="veln-nav-btn" data-tab="achv">⭐ Ачивки</button>
+      <button class="veln-nav-btn" data-tab="market">💸 Маркет</button>
+      <button class="veln-nav-btn" data-tab="trade">🔄 Обмен</button>
+      <button class="veln-nav-btn" data-tab="clan">👥 Клан</button>
+      <button class="veln-nav-btn" data-tab="feed">📰 Лента</button>
+    </nav>
+    <section class="veln-tabs">
+      <div id="tab-inventory" class="tab-content hidden">
+        <div id="inventory" class="inventory-list"></div>
+      </div>
+      <div id="tab-top" class="tab-content hidden">
+        <div class="top-tabs">
+          <button class="top-tab-btn active" data-top-tab="balance">Топ по очкам</button>
+          <button class="top-tab-btn" data-top-tab="vc">Топ по VELN COIN</button>
+        </div>
+        <ul id="top-list-balance" class="top-list"></ul>
+        <ul id="top-list-vc" class="top-list hidden"></ul>
+      </div>
+      <div id="tab-tasks" class="tab-content hidden">
+        <h3>🔥 Ежедневные задания</h3>
+        <div id="daily-tasks"></div>
+      </div>
+      <div id="tab-achv" class="tab-content hidden">
+        <h3>⭐ Ваши ачивки</h3>
+        <div id="achievements"></div>
+      </div>
+      <div id="tab-market" class="tab-content hidden">
+        <h3>💸 Маркетплейс</h3>
+        <div id="market-list"></div>
+      </div>
+      <div id="tab-trade" class="tab-content hidden">
+        <h3>🔄 Peer-to-peer обмен</h3>
+        <div id="trade-ui"></div>
+      </div>
+      <div id="tab-clan" class="tab-content hidden">
+        <h3>👥 Кланы</h3>
+        <div id="clan-ui"></div>
+      </div>
+      <div id="tab-feed" class="tab-content hidden">
+        <h3>📰 Лента событий</h3>
+        <div id="feed-list"></div>
+      </div>
+    </section>
+  </div>
+  <!-- Модалка выпадения предмета -->
+  <div id="drop-modal" class="drop-modal">
+    <div class="drop-content" id="drop-content"></div>
+  </div>
+  <!-- Кейсы предпросмотр sheet -->
+  <div id="case-preview-sheet" class="case-preview-sheet">
+    <div class="case-preview-header">
+      <div class="case-preview-grabber"></div>
+      <button id="case-preview-close" class="case-preview-close">&times;</button>
+      <button id="case-preview-open" class="case-preview-open">Открыть кейс</button>
+    </div>
+    <div id="case-preview-table" class="case-preview-table"></div>
+  </div>
+  <div id="sheet-backdrop" class="sheet-backdrop"></div>
+  <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,285 @@
+:root {
+  --main-bg: linear-gradient(135deg, #191c22 0%, #292c33 100%);
+  --card-bg: rgba(29,32,40,0.98);
+  --deep: #21232c;
+  --accent: #4fb0ff;
+  --accent2: #53ffcb;
+  --white: #fff;
+  --text: #e2e6f3;
+  --text-muted: #8ea4c7;
+  --case-glow: 0 0 80px 15px #4fb0ff77;
+  --menu-glow: 0 0 24px #4fb0ff33;
+  --shadow: 0 8px 36px 0 #0009, 0 1.5px 4px #0007;
+  --radius: 28px;
+  --border: #232636;
+  --divider: #242742;
+}
+
+body, html {
+  min-height: 100vh;
+  min-width: 100vw;
+  width: 100vw;
+  height: 100vh;
+  margin: 0;
+  padding: 0;
+  background: var(--main-bg);
+  color: var(--text);
+  font-family: 'Inter', 'Roboto', Arial, sans-serif;
+  box-sizing: border-box;
+  overflow-x: hidden;
+}
+
+/* Верхний бар */
+.swag-header {
+  width: 100vw;
+  background: transparent;
+  padding: 0;
+  margin: 0;
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 22;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  pointer-events: none;
+}
+.veln-coin-bar {
+  margin: 2vw auto 0 auto;
+  background: rgba(30,38,48,0.88);
+  box-shadow: 0 2px 14px #4fb0ff22;
+  border-radius: 22px;
+  padding: 0.58em 1.9em 0.58em 1.2em;
+  display: flex;
+  align-items: center;
+  gap: 0.95em;
+  border: 1.5px solid var(--border);
+  pointer-events: auto;
+  min-width: 170px;
+}
+.veln-coin-label {
+  color: var(--accent);
+  font-weight: 700;
+  font-size: 1.09em;
+  letter-spacing: .08em;
+  margin-right: 0.3em;
+}
+.veln-coin-value {
+  color: var(--white);
+  font-family: 'Orbitron', monospace;
+  font-weight: 900;
+  font-size: 1.1em;
+  letter-spacing: .04em;
+  background: linear-gradient(90deg,#4fb0ff55 0%,#fff2 100%);
+  border-radius: 10px;
+  padding: 0.13em 0.85em;
+  box-shadow: 0 1px 4px #4fb0ff33;
+}
+
+/* Главный меню */
+.swag-main-menu {
+  width: 100vw;
+  min-height: 53vh;
+  margin: 0;
+  padding: 0;
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.swag-bg-effect {
+  position: absolute;
+  left: 50%; top: 51%;
+  transform: translate(-50%,-50%);
+  width: 420px;
+  height: 240px;
+  background: radial-gradient(ellipse 60% 70% at 50% 55%, #4fb0ff2c 0%, #232636 100%);
+  filter: blur(40px);
+  opacity: .7;
+  z-index: 0;
+  pointer-events: none;
+}
+.swag-bg-blur {
+  position: absolute;
+  left: 50%; top: 54%;
+  transform: translate(-50%,-50%);
+  width: 90vw;
+  height: 32vw;
+  max-width: 540px;
+  background: linear-gradient(110deg,#4fb0ff33 0%,#232636 100%);
+  filter: blur(23px);
+  opacity: .5;
+  z-index: 0;
+  pointer-events: none;
+}
+.swag-menu-content {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: stretch;
+  width: 100vw;
+  max-width: 560px;
+  margin: 0 auto;
+  margin-top: 88px;
+  z-index: 2;
+  position: relative;
+}
+.swag-menu-left,
+.swag-menu-right {
+  flex: 1 1 0px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.swag-menu-center {
+  flex: 1.5 1 0px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Кнопки меню */
+.swag-menu-btn {
+  background: var(--card-bg);
+  border: 2px solid var(--border);
+  box-shadow: 0 3px 20px #4fb0ff22, 0 1.5px 6px #0005;
+  color: var(--text);
+  border-radius: 18px;
+  padding: 1.1em 2.2em;
+  font-size: 1.12em;
+  font-weight: 700;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.44em;
+  cursor: pointer;
+  margin: 0;
+  transition: box-shadow .17s, border-color .18s, background .15s;
+  outline: none;
+}
+.swag-menu-btn:hover, .swag-menu-btn:focus {
+  border-color: var(--accent);
+  background: #23283a;
+  color: var(--accent);
+  box-shadow: 0 4px 32px #4fb0ff44;
+}
+.swag-menu-btn-icon {
+  font-size: 1.6em;
+  margin-bottom: 0.1em;
+}
+.swag-menu-btn-text {
+  font-size: 1em;
+  font-weight: 600;
+  letter-spacing: .01em;
+  margin-top: .1em;
+}
+
+/* Центральная кейс-кнопка с эффектом */
+.swag-case-btn {
+  background: linear-gradient(130deg,#22243c 30%,#4fb0ff 90%);
+  border: none;
+  border-radius: 32px;
+  box-shadow: 0 8px 38px #4fb0ff77, 0 2px 10px #fff2;
+  position: relative;
+  min-width: 170px;
+  min-height: 170px;
+  max-width: 220px;
+  max-height: 220px;
+  width: 26vw;
+  height: 26vw;
+  aspect-ratio: 1/1;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: transform .17s, box-shadow .17s;
+  z-index: 2;
+}
+.swag-case-btn:active {
+  transform: scale(1.03);
+  box-shadow: 0 10px 56px #4fb0ffaa, 0 2px 16px #fff6;
+}
+.swag-case-glow {
+  position: absolute;
+  left: 50%; top: 50%;
+  transform: translate(-50%,-50%);
+  width: 130%;
+  height: 130%;
+  border-radius: 50%;
+  background: radial-gradient(circle, #4fb0ff55 10%, #292c33 67%, transparent 100%);
+  filter: blur(10px);
+  z-index: 0;
+  pointer-events: none;
+  animation: case-glow-pulse 2.2s infinite alternate;
+}
+@keyframes case-glow-pulse {
+  0% { opacity: .7; }
+  100% { opacity: .94; filter: blur(18px);}
+}
+.swag-case-main {
+  font-size: 2.5em;
+  font-family: 'Orbitron', monospace;
+  font-weight: 900;
+  color: var(--white);
+  letter-spacing: .09em;
+  text-shadow: 0 0 22px #4fb0ffcc,0 1px 25px #fff9;
+  z-index: 2;
+  margin-bottom: .11em;
+  user-select: none;
+}
+.swag-case-open-text {
+  font-size: 1.02em;
+  font-weight: 600;
+  color: var(--accent);
+  letter-spacing: .05em;
+  background: rgba(79,176,255,0.08);
+  border-radius: 10px;
+  padding: .25em .85em;
+  margin-top: -.1em;
+  z-index: 2;
+  box-shadow: 0 0 10px #4fb0ff33;
+  user-select: none;
+}
+
+/* Контент секций */
+.swag-section {
+  width: 100vw;
+  max-width: 540px;
+  min-height: 260px;
+  margin: 0 auto;
+  padding: 0 0 10vh 0;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  position: relative;
+}
+
+/* Адаптив */
+@media (max-width: 600px) {
+  html, body { font-size: 15px; }
+  .swag-menu-content { margin-top: 72px; }
+  .swag-main-menu { min-height: 41vh;}
+  .swag-section { max-width: 99vw; }
+  .swag-case-btn { min-width: 120px; min-height: 120px; width: 36vw; height: 36vw; }
+}
+@media (max-width: 430px) {
+  .swag-menu-content { max-width: 99vw; }
+  .swag-section { max-width: 99vw; }
+  .swag-case-btn { min-width: 90px; min-height: 90px; }
+}
+
+/* Эффекты */
+.swag-case-btn,
+.swag-menu-btn {
+  box-shadow: 0 1px 12px #4fb0ff33, 0 1.5px 8px #0004;
+}
+
+/* Скрыть стандартный outline */
+button:focus {
+  outline: none;
+}

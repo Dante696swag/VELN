@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no,viewport-fit=cover">
+  <title>VELN</title>
+  <link rel="stylesheet" href="styles.css">
+  <script src="https://telegram.org/js/telegram-web-app.js"></script>
+</head>
+<body>
+  <!-- Верхний бар с VELN COIN -->
+  <header class="swag-header">
+    <div class="veln-coin-bar">
+      <span class="veln-coin-label">VELN COIN</span>
+      <span class="veln-coin-value" id="vc-balance">9999</span>
+    </div>
+  </header>
+  <!-- Главный меню блок с эффектами -->
+  <main class="swag-main-menu">
+    <div class="swag-bg-effect"></div>
+    <div class="swag-bg-blur"></div>
+    <div class="swag-menu-content">
+      <div class="swag-menu-left">
+        <button class="swag-menu-btn" data-tab="top" id="top-btn">
+          <span class="swag-menu-btn-icon">🏆</span>
+          <span class="swag-menu-btn-text">Топ игроков</span>
+        </button>
+      </div>
+      <div class="swag-menu-center">
+        <button class="swag-case-btn" data-tab="case" id="case-btn">
+          <span class="swag-case-glow"></span>
+          <span class="swag-case-main">VELN</span>
+          <span class="swag-case-open-text">Открыть кейс</span>
+        </button>
+      </div>
+      <div class="swag-menu-right">
+        <button class="swag-menu-btn" data-tab="inventory" id="inventory-btn">
+          <span class="swag-menu-btn-icon">🎒</span>
+          <span class="swag-menu-btn-text">Инвентарь</span>
+        </button>
+      </div>
+    </div>
+  </main>
+  <!-- Контент по вкладке -->
+  <section class="swag-section" id="swag-section">
+    <!-- Вставляется динамически -->
+  </section>
+  <script src="script.js"></script>
+</body>
+</html>
